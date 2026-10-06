@@ -1,7 +1,7 @@
 /* SKH Loan Approval - frontend logic */
 'use strict';
 
-const API_URL = 'http://127.0.0.1:8000/predict';
+const API_URL = 'https://skhloan.onrender.com';
 
 const MSG = {
   network: 'Unable to connect to the prediction server. Please make sure the FastAPI backend is running.',
