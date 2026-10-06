@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SKH Loan Approval | Smart Credit Decisions. Faster Loan Approval.</title>
+  <meta name="description" content="AI-powered credit risk assessment powered by an XGBoost model.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['DM Sans', 'sans-serif'], display: ['Sora', 'sans-serif'] },
+      colors: { navy: '#0b1f3f', brand: '#2563eb', mint: '#10b981' }
+    } } };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-slate-700 bg-slate-50 antialiased">
+
+<!-- Reusable logo (inline SVG): shield + checkmark + SKH lettering -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 48">
+    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#0b1f3f"/></linearGradient></defs>
+    <path d="M24 2 5 9.5v13.7C5 34.800 13 43 24 46c11-3 19-11.200 19-22.800V9.500z" fill="url(#lg)"/>
+    <path d="M15.500 18.500l5.500 5.500 11-11" fill="none" stroke="#34d399" stroke-width="3.500" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="38" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="9.500" fill="#fff" letter-spacing=".5">SKH</text>
+  </symbol>
+</svg>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-white px-3 py-2 rounded">Skip to content</a>
+
+<!-- NAVBAR -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+    <a href="#home" class="flex items-center gap-2.5" aria-label="SKH Loan Approval home">
+      <svg class="w-9 h-9"><use href="#logo"/></svg>
+      <span class="font-display font-bold text-navy text-base sm:text-lg">SKH Loan Approval</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a class="nav-link" href="#home">Home</a></li>
+      <li><a class="nav-link" href="#loan-check">Loan Check</a></li>
+      <li><a class="nav-link" href="#how-it-works">How It Works</a></li>
+      <li><a class="nav-link" href="#about">About</a></li>
+    </ul>
+    <a href="#loan-check" class="hidden md:inline-flex btn-primary text-sm px-5 py-2.5">Check Eligibility</a>
+    <button id="menuBtn" class="md:hidden p-2 rounded-lg text-navy" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="md:hidden mobile-menu" aria-hidden="true">
+    <ul class="px-4 pb-5 pt-2 space-y-1 font-medium">
+      <li><a class="block py-3 px-3 rounded-lg hover:bg-slate-100" href="#home">Home</a></li>
+      <li><a class="block py-3 px-3 rounded-lg hover:bg-slate-100" href="#loan-check">Loan Check</a></li>
+      <li><a class="block py-3 px-3 rounded-lg hover:bg-slate-100" href="#how-it-works">How It Works</a></li>
+      <li><a class="block py-3 px-3 rounded-lg hover:bg-slate-100" href="#about">About</a></li>
+      <li><a class="btn-primary w-full mt-2 py-3" href="#loan-check">Check Eligibility</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section id="home" class="hero-bg pt-28 pb-16 sm:pt-36 sm:pb-24 text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="inline-flex items-center gap-2 text-xs sm:text-sm bg-white/10 border border-white/15 rounded-full px-3 py-1.5 mb-5">
+        <i data-lucide="sparkles" class="w-4 h-4 text-emerald-300"></i> Smart Credit Decisions. Faster Loan Approval.
+      </p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-tight">Smart Loan Decisions Powered by AI</h1>
+      <p class="mt-5 text-lg text-blue-100 max-w-xl">Check your loan risk instantly using our machine-learning powered credit assessment system.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#loan-check" class="btn-accent px-7 py-3.5">Check Loan Eligibility</a>
+        <a href="#how-it-works" class="btn-ghost px-7 py-3.5">How It Works</a>
+      </div>
+      <ul class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-blue-100">
+        <li class="flex items-center gap-2"><i data-lucide="brain-circuit" class="w-5 h-5 text-emerald-300"></i>AI Powered</li>
+        <li class="flex items-center gap-2"><i data-lucide="zap" class="w-5 h-5 text-emerald-300"></i>Fast Assessment</li>
+        <li class="flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5 text-emerald-300"></i>Secure Data</li>
+        <li class="flex items-center gap-2"><i data-lucide="timer" class="w-5 h-5 text-emerald-300"></i>Instant Result</li>
+      </ul>
+    </div>
+    <div class="flex justify-center lg:justify-end" aria-hidden="true">
+      <div class="float-card bg-white text-slate-700 rounded-3xl shadow-2xl p-6 w-full max-w-sm">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2"><svg class="w-8 h-8"><use href="#logo"/></svg><span class="font-display font-bold text-navy">Credit Assessment</span></div>
+          <span class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2.5 py-1 rounded-full">Live</span>
+        </div>
+        <div class="mt-6 flex items-center gap-5">
+          <div class="relative w-24 h-24">
+            <svg viewBox="0 0 100 100" class="w-24 h-24 -rotate-90"><circle cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="10"/><circle cx="50" cy="50" r="42" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="62"/></svg>
+            <i data-lucide="shield-check" class="w-8 h-8 text-mint absolute inset-0 m-auto"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500">Score</p>
+            <p class="font-display font-bold text-2xl text-navy">Low Risk</p>
+            <p class="text-xs text-slate-500 mt-2">Status</p>
+            <p class="font-semibold text-mint flex items-center gap-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i>Eligible</p>
+          </div>
+        </div>
+        <div class="mt-6 space-y-2.5">
+          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-brand w-4/5"></div></div>
+          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-mint w-3/5"></div></div>
+          <div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-navy w-2/3"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOAN CHECK -->
+<section id="loan-check" class="py-16 sm:py-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy">Check Your Loan Eligibility</h2>
+      <p class="mt-3 text-slate-600">Enter your financial and loan details to get an AI-powered credit risk assessment.</p>
+    </div>
+
+    <form id="loanForm" class="card p-5 sm:p-8 reveal" novalidate>
+      <div id="formError" class="alert-error hidden" role="alert"></div>
+
+      <fieldset class="mb-8">
+        <legend class="group-title"><i data-lucide="user" class="w-5 h-5"></i>Personal Information</legend>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="field"><label for="person_age">Person Age</label>
+            <div class="ctl"><i data-lucide="cake"></i><input id="person_age" name="person_age" type="number" min="18" max="100" step="1" placeholder="Enter your age" required></div></div>
+          <div class="field"><label for="person_income">Person Income</label>
+            <div class="ctl"><i data-lucide="wallet"></i><input id="person_income" name="person_income" type="number" min="0" step="1" placeholder="Enter annual income" required></div></div>
+          <div class="field"><label for="person_emp_length">Employment Length</label>
+            <div class="ctl"><i data-lucide="briefcase"></i><input id="person_emp_length" name="person_emp_length" type="number" min="0" step="0.1" placeholder="Years of employment" required></div></div>
+          <div class="field"><label for="person_home_ownership">Home Ownership</label>
+            <div class="ctl"><i data-lucide="home"></i><select id="person_home_ownership" name="person_home_ownership" required>
+              <option value="" disabled selected>Select ownership</option><option>RENT</option><option>OWN</option><option>MORTGAGE</option><option>OTHER</option></select></div></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="mb-8">
+        <legend class="group-title"><i data-lucide="banknote" class="w-5 h-5"></i>Loan Information</legend>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="field"><label for="loan_amnt">Loan Amount</label>
+            <div class="ctl"><i data-lucide="coins"></i><input id="loan_amnt" name="loan_amnt" type="number" min="1" step="1" placeholder="Enter loan amount" required></div></div>
+          <div class="field"><label for="loan_int_rate">Loan Interest Rate (%)</label>
+            <div class="ctl"><i data-lucide="percent"></i><input id="loan_int_rate" name="loan_int_rate" type="number" min="0" max="100" step="0.01" placeholder="e.g. 11.5" required></div></div>
+          <div class="field"><label for="loan_percent_income">Loan Percent Income</label>
+            <div class="ctl"><i data-lucide="pie-chart"></i><input id="loan_percent_income" name="loan_percent_income" type="number" min="0" max="1" step="0.01" placeholder="e.g. 0.20" required></div>
+            <p class="hint">Loan amount divided by income, as a fraction (0 to 1).</p></div>
+          <div class="field"><label for="loan_grade">Loan Grade</label>
+            <div class="ctl"><i data-lucide="award"></i><select id="loan_grade" name="loan_grade" required>
+              <option value="" disabled selected>Select grade</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="mb-6">
+        <legend class="group-title"><i data-lucide="line-chart" class="w-5 h-5"></i>Credit Information</legend>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="field"><label for="cb_person_cred_hist_length">Credit History Length</label>
+            <div class="ctl"><i data-lucide="history"></i><input id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" type="number" min="0" step="1" placeholder="Years of credit history" required></div></div>
+          <div class="field"><label for="cb_person_default_on_file">Previous Default</label>
+            <div class="ctl"><i data-lucide="alert-circle"></i><select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
+              <option value="" disabled selected>Select (Y or N)</option><option value="Y">Y</option><option value="N">N</option></select></div></div>
+          <div class="field"><label for="loan_intent">Loan Intent</label>
+            <div class="ctl"><i data-lucide="target"></i><select id="loan_intent" name="loan_intent" required>
+              <option value="" disabled selected>Select intent</option><option>PERSONAL</option><option>EDUCATION</option><option>MEDICAL</option><option>VENTURE</option><option>HOMEIMPROVEMENT</option><option>DEBTCONSOLIDATION</option></select></div></div>
+        </div>
+      </fieldset>
+
+      <p class="flex items-center gap-2 text-sm text-slate-500 mb-5"><i data-lucide="shield-check" class="w-4 h-4 text-mint shrink-0"></i>Your information is used only for credit risk assessment.</p>
+      <button id="submitBtn" type="submit" class="btn-primary w-full py-4 text-base">
+        <span id="spinner" class="spinner hidden" aria-hidden="true"></span>
+        <span id="btnText">Analyze Credit Risk</span>
+      </button>
+    </form>
+
+    <!-- RESULT (hidden until prediction) -->
+    <div id="result" class="result-card hidden mt-8" role="status" aria-live="polite" tabindex="-1">
+      <h3 class="font-display font-bold text-xl text-navy text-center">Credit Assessment Result</h3>
+      <div class="flex flex-col items-center text-center mt-6">
+        <div class="relative w-36 h-36">
+          <svg viewBox="0 0 100 100" class="w-36 h-36 -rotate-90"><circle cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="9"/>
+            <circle id="ring" cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/></svg>
+          <span id="resultIcon" class="absolute inset-0 grid place-items-center"></span>
+        </div>
+        <p id="resultTitle" class="font-display font-extrabold text-3xl mt-5"></p>
+        <p id="resultText" class="mt-3 text-slate-600 max-w-lg"></p>
+        <p class="mt-5 text-sm text-slate-500 bg-slate-100 rounded-xl px-4 py-3 max-w-lg">This is an AI-based risk estimate, not an official loan approval or rejection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy text-center reveal">How It Works</h2>
+    <ol class="steps mt-12 grid md:grid-cols-3 gap-8">
+      <li class="step reveal"><span class="step-icon"><i data-lucide="clipboard-list" class="w-7 h-7"></i></span>
+        <h3 class="font-display font-bold text-lg text-navy mt-4">Enter Your Details</h3><p class="mt-2 text-slate-600">Provide basic personal, financial and loan information.</p></li>
+      <li class="step reveal"><span class="step-icon"><i data-lucide="cpu" class="w-7 h-7"></i></span>
+        <h3 class="font-display font-bold text-lg text-navy mt-4">AI Credit Analysis</h3><p class="mt-2 text-slate-600">Our machine-learning model analyzes the information.</p></li>
+      <li class="step reveal"><span class="step-icon"><i data-lucide="file-check-2" class="w-7 h-7"></i></span>
+        <h3 class="font-display font-bold text-lg text-navy mt-4">Get Risk Assessment</h3><p class="mt-2 text-slate-600">Receive an instant estimated credit risk result.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="py-16 sm:py-24 bg-navy text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl">Powered by Machine Learning</h2>
+      <p class="mt-4 text-blue-100">The system uses an XGBoost classification model trained on historical credit-risk data to estimate loan risk.</p>
+    </div>
+    <ul class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <li class="tech"><i data-lucide="terminal"></i>Python</li>
+      <li class="tech"><i data-lucide="flask-conical"></i>Scikit-learn</li>
+      <li class="tech"><i data-lucide="trees"></i>XGBoost</li>
+      <li class="tech"><i data-lucide="server"></i>FastAPI</li>
+      <li class="tech"><i data-lucide="plug"></i>REST API</li>
+      <li class="tech"><i data-lucide="code-2"></i>HTML5</li>
+      <li class="tech"><i data-lucide="palette"></i>Tailwind CSS</li>
+      <li class="tech"><i data-lucide="braces"></i>JavaScript</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-16 sm:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <article class="card p-6 hover-lift reveal"><i data-lucide="zap" class="w-8 h-8 text-brand"></i><h3 class="font-display font-bold text-navy mt-4">Fast</h3><p class="mt-2 text-sm text-slate-600">Get an assessment within seconds.</p></article>
+    <article class="card p-6 hover-lift reveal"><i data-lucide="brain-circuit" class="w-8 h-8 text-brand"></i><h3 class="font-display font-bold text-navy mt-4">AI Powered</h3><p class="mt-2 text-sm text-slate-600">Machine-learning based credit risk assessment.</p></article>
+    <article class="card p-6 hover-lift reveal"><i data-lucide="lock-keyhole" class="w-8 h-8 text-brand"></i><h3 class="font-display font-bold text-navy mt-4">Secure</h3><p class="mt-2 text-sm text-slate-600">Your information is transmitted securely to the prediction API during normal deployment.</p></article>
+    <article class="card p-6 hover-lift reveal"><i data-lucide="smartphone" class="w-8 h-8 text-brand"></i><h3 class="font-display font-bold text-navy mt-4">Responsive</h3><p class="mt-2 text-sm text-slate-600">Works smoothly on desktop, tablet and mobile.</p></article>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center reveal">
+    <svg class="w-14 h-14 mx-auto"><use href="#logo"/></svg>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mt-4">About SKH Loan Approval</h2>
+    <p class="mt-5 text-lg text-slate-600">SKH Loan Approval is an AI-powered credit risk assessment interface designed to demonstrate how machine learning can assist in evaluating loan risk.</p>
+    <p class="mt-4 text-slate-600">It provides an estimate only and is not a substitute for official financial institution decisions.</p>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-navy text-blue-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="flex flex-col md:flex-row md:justify-between gap-8">
+      <div>
+        <div class="flex items-center gap-2.5"><svg class="w-8 h-8"><use href="#logo"/></svg><span class="font-display font-bold text-white">SKH Loan Approval</span></div>
+        <p class="mt-3 text-sm">Smart Credit Decisions. Faster Loan Approval.</p>
+      </div>
+      <nav aria-label="Footer navigation"><ul class="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+        <li><a class="hover:text-white" href="#home">Home</a></li><li><a class="hover:text-white" href="#loan-check">Loan Check</a></li>
+        <li><a class="hover:text-white" href="#how-it-works">How It Works</a></li><li><a class="hover:text-white" href="#about">About</a></li></ul></nav>
+    </div>
+    <hr class="border-white/10 my-8">
+    <p class="text-sm">&copy; 2026 SKH Loan Approval. All rights reserved.</p>
+    <p class="mt-3 text-xs text-blue-200/80 max-w-4xl">Disclaimer: This application provides an estimated credit-risk prediction based on machine-learning output. It does not constitute an official loan approval, financial advice, or guarantee of loan eligibility.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
